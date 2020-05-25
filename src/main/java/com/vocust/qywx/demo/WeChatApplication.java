@@ -17,6 +17,6 @@ public class WeChatApplication
   public static void main(String[] args)
   {
     SpringApplication.run(WeChatApplication.class, args);
-    log.info("server start success!");
+    log.info("serversdfasdf start success!");
   }
 }
