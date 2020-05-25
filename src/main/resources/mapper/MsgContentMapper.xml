@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+	<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper
+	namespace="com.vocust.qywx.demo.dao.mapper.MsgContentMapper">
+
+
+	<sql id="table"> tbl_msgcontent </sql>
+
+	<resultMap id="MsgContentInfoMap"
+		type="com.vocust.qywx.demo.dao.entity.MsgContent">
+		<result column="id" property="id" />
+		<result column="msgid" property="msgid" />
+		<result column="action" property="action" />
+		<result column="sender" property="from" />
+		<result column="fromView" property="fromView" />
+		<result column="tolist" property="tolist" />
+		<result column="tolistView" property="tolistView" />
+		<result column="roomid" property="roomid" />
+		<result column="roomidView" property="roomidView" />
+		<result column="msgtime" property="msgtime" />
+		<result column="msgtype" property="msgtype" />
+		<result column="text" property="text" />
+		<result column="image" property="image" />
+		<result column="weapp" property="weapp" />
+		<result column="redpacket" property="redpacket" />
+		<result column="file" property="file" />
+		<result column="video" property="video" />
+		<result column="voice" property="voice" />
+		<result column="chatrecord" property="chatrecord" />
+		<result column="filename" property="filename" />
+	</resultMap>
+
+	<select id="findAll" resultMap="MsgContentInfoMap">
+		select * from
+		<include refid="table" />
+		order by msgtime asc limit #{pageNum},#{numPerPage}
+	</select>
+
+	<select id="counts" resultType="java.lang.Integer">
+		SELECT count(1) FROM
+		<include refid="table" />
+	</select>
+
+	<insert id="insertMsgContent">
+		insert into
+		<include refid="table" />
+		(msgid,action,sender,fromView,tolist,tolistView,roomid,roomidView,msgtime,msgtype,text,image,weapp,redpacket,file,video,voice,chatrecord,filename)
+		values(#{msgid},#{action},#{from},#{fromView},#{tolist},#{tolistView},#{roomid},#{roomidView},#{msgtime},#{msgtype},#{text},#{image},#{weapp},#{redpacket},#{file},#{video},#{voice},#{chatrecord},#{filename})
+	</insert>
+
+	<select id="getMsgByIdAndType" resultType="java.lang.String">
+		SELECT ${msgtype} FROM
+		<include refid="table" />
+		where id = #{id}
+	</select>
+
+	<update id="updateFileName" parameterType="com.vocust.qywx.demo.dao.entity.MsgContent" keyProperty="id">
+		update tbl_msgcontent
+		<set>
+			filename=#{filename}
+		</set>
+		where id=#{id}
+	</update>
+	
+	
+	<select id="getFileById" resultType="java.lang.String">
+		SELECT filename FROM <include refid="table" /> where id = #{id}
+	</select>
+
+	<!-- 清空表数据 -->
+	<delete id="clearDatas">
+		truncate table
+		<include refid="table" />
+	</delete>
+</mapper>

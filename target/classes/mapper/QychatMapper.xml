@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+	<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.vocust.qywx.demo.dao.mapper.QychatMapper">
+	<resultMap id="QychatInfoMap" type="com.vocust.qywx.demo.dao.entity.User">
+		<result column="seq" property="seq" />
+		<result column="msgid" property="msgid" />
+		<result column="publickey_ver" property="publickey_ver" />
+		<result column="encrypt_random_key" property="encrypt_random_key" />
+		<result column="encrypt_chat_msg" property="encrypt_chat_msg" />
+	</resultMap>
+
+	<select id="queryAllInfos" resultMap="QychatInfoMap">
+		select * from tbl_qychat
+	</select>
+
+	<insert id="insertQychat">
+		insert into
+		tbl_qychat(seq,msgid,publickey_ver,encrypt_random_key,encrypt_chat_msg)
+		values(#{seq},#{msgid},#{publickey_ver},#{encrypt_random_key},#{encrypt_chat_msg})
+	</insert>
+	
+	<select id="getSeq" resultType="java.lang.Integer">
+		select seq from tbl_qychat order by id desc limit 1;
+	</select>
+	
+	<!-- 清空表数据-->
+	<delete id="clearDatas">
+	    truncate table tbl_qychat;
+	</delete>
+</mapper>

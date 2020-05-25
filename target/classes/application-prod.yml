@@ -1,0 +1,37 @@
+#服务器
+server:
+  port: 8888
+spring:
+    #数据源
+  datasource:
+    url: jdbc:mysql://172.16.1.2:3306/qychatdb?useUnicode=true&amp;characterEncoding=UTF-8
+    username: root
+    password: Huake@uat2020
+    driver-class-name: com.mysql.jdbc.Driver
+    tomcat:
+     init-s-q-l: SET NAMES utf8mb4 #解决emoji表情四个字节无法插入utf-8(3个字节)编码的mysql表中
+     #thymelea模板配置
+    thymeleaf:
+      prefix:
+        classpath: /templates/
+      suffix: .html
+      mode: HTML5
+      encoding: UTF-8
+      content-type: text/html
+      cache: false
+  resources:
+    chain:
+      strategy:
+        content:
+          enabled: true
+          paths: /**
+   
+#mybatis配置
+mybatis:
+  typeAliasesPackage: com.example.mybaitsxml.dao.entity
+  mapperLocations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+  
+#自定义配置
+filepath: /home/dev/html/dist/static/
