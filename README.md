@@ -13,4 +13,4 @@
 ![image](https://github.com/hufeiyaya/QyChat/blob/master/images/text.png)
 
 ##### 5消息列表图片消息展示
-![image](https://github.com/hufeiyaya/QyChat/blob/master/images/login.png)
+![image](https://github.com/hufeiyaya/QyChat/blob/master/images/image.png)
