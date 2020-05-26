@@ -1,5 +1,8 @@
 # QyChat
-企业微信会话内容存档 前端展示<br>
+
+###### 最近做企业微信 会话内容存档 由于官方网站没有完整的JAVA代码 踩了很多坑   最后自己整理出来一个springboot + vue 的项目放在这里 以供大家参考
+
+企业微信会话内容存档 前端页面展示<br>
 ##### 1登录页面
 ![image](https://github.com/hufeiyaya/QyChat/blob/master/images/login.png)
 
