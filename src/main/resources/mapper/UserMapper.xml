@@ -10,6 +10,6 @@
 	</resultMap>
 
 	<select id="queryAllUsers" resultMap="UserInfoMap">
-		select * from tbl_user
+		SELECT * FROM tbl_user
 	</select>
 </mapper>

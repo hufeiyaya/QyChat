@@ -32,9 +32,9 @@
 	</resultMap>
 
 	<select id="findAll" resultMap="MsgContentInfoMap">
-		select * from
+		SELECT * FROM
 		<include refid="table" />
-		order by msgtime asc limit #{pageNum},#{numPerPage}
+		ORDER BY msgtime ASC limit #{pageNum},#{numPerPage}
 	</select>
 
 	<select id="counts" resultType="java.lang.Integer">
@@ -43,34 +43,34 @@
 	</select>
 
 	<insert id="insertMsgContent">
-		insert into
+		INSERT INTO
 		<include refid="table" />
 		(msgid,action,sender,fromView,tolist,tolistView,roomid,roomidView,msgtime,msgtype,text,image,weapp,redpacket,file,video,voice,chatrecord,filename)
-		values(#{msgid},#{action},#{from},#{fromView},#{tolist},#{tolistView},#{roomid},#{roomidView},#{msgtime},#{msgtype},#{text},#{image},#{weapp},#{redpacket},#{file},#{video},#{voice},#{chatrecord},#{filename})
+		VALUES (#{msgid},#{action},#{from},#{fromView},#{tolist},#{tolistView},#{roomid},#{roomidView},#{msgtime},#{msgtype},#{text},#{image},#{weapp},#{redpacket},#{file},#{video},#{voice},#{chatrecord},#{filename})
 	</insert>
 
 	<select id="getMsgByIdAndType" resultType="java.lang.String">
 		SELECT ${msgtype} FROM
 		<include refid="table" />
-		where id = #{id}
+		WHERE id = #{id}
 	</select>
 
 	<update id="updateFileName" parameterType="com.vocust.qywx.demo.dao.entity.MsgContent" keyProperty="id">
-		update tbl_msgcontent
+		UPDATE tbl_msgcontent
 		<set>
 			filename=#{filename}
 		</set>
-		where id=#{id}
+		WHERE id=#{id}
 	</update>
 	
 	
 	<select id="getFileById" resultType="java.lang.String">
-		SELECT filename FROM <include refid="table" /> where id = #{id}
+		SELECT filename FROM <include refid="table" /> WHERE id = #{id}
 	</select>
 
 	<!-- 清空表数据 -->
 	<delete id="clearDatas">
-		truncate table
+		truncate TABLE
 		<include refid="table" />
 	</delete>
 </mapper>

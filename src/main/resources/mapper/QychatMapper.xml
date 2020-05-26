@@ -11,21 +11,21 @@
 	</resultMap>
 
 	<select id="queryAllInfos" resultMap="QychatInfoMap">
-		select * from tbl_qychat
+		SELECT * FROM tbl_qychat
 	</select>
 
 	<insert id="insertQychat">
-		insert into
+		INSERT INTO
 		tbl_qychat(seq,msgid,publickey_ver,encrypt_random_key,encrypt_chat_msg)
-		values(#{seq},#{msgid},#{publickey_ver},#{encrypt_random_key},#{encrypt_chat_msg})
+		VALUES (#{seq},#{msgid},#{publickey_ver},#{encrypt_random_key},#{encrypt_chat_msg})
 	</insert>
 	
 	<select id="getSeq" resultType="java.lang.Integer">
-		select seq from tbl_qychat order by id desc limit 1;
+		SELECT seq FROM tbl_qychat ORDER BY id DESC limit 1;
 	</select>
 	
 	<!-- 清空表数据-->
 	<delete id="clearDatas">
-	    truncate table tbl_qychat;
+	    truncate TABLE tbl_qychat;
 	</delete>
 </mapper>
