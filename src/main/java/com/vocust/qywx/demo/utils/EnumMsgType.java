@@ -9,7 +9,15 @@ package com.vocust.qywx.demo.utils;
 */
 
 public enum EnumMsgType {
-    TEXT("文本", "text"), IMAGE("图片", "image"), VOICE("语音", "voice"), VIDEO("视频", "video"), WEAPP("小程序", "weapp"), FILE("文件", "file"),CHATRECORD("会话记录消息","chatrecord");
+    TEXT("文本", "text"),
+    IMAGE("图片", "image"),
+    VOICE("语音", "voice"),
+    VIDEO("视频", "video"),
+    WEAPP("小程序", "weapp"),
+    FILE("文件", "file"),
+    CHATRECORD("会话记录消息","chatrecord"),
+    SWITCH("切换企业日志","switch"),
+    RECALL("撤回消息","revoke");
     private String name;
     private String index;
 

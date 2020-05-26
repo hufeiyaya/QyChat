@@ -1,21 +1,5 @@
 package com.vocust.qywx.demo.service.impl;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.PostConstruct;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
-
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.google.gson.Gson;
@@ -34,8 +18,20 @@ import com.vocust.qywx.demo.service.QychatService;
 import com.vocust.qywx.demo.service.UserService;
 import com.vocust.qywx.demo.utils.EnterpriseParame;
 import com.vocust.qywx.demo.utils.RSAUtils;
-
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 @Slf4j
 @Component
@@ -131,14 +127,19 @@ public class QychatServiceImpl implements QychatService {
 				msgcontent.setFilename(getFileNameAndDownloadData(msgcontent));	
 			}else if(content.getString("action").equals("switch"))
 			{
+				log.info("switch 消息"+content);
 				msgcontent.setMsgid(content.getString("msgid"));
 				msgcontent.setAction(content.getString("action"));
 				msgcontent.setFrom(content.getString("user"));
+				msgcontent.setMsgtime(content.getString("time"));
+				msgcontent.setMsgtype("switch");
 				msgcontent.setFromView(userService.getUsernameByUserid(content.getString("user")));
 			}else 
 			{
 				msgcontent.setMsgid(content.getString("msgid"));
 				msgcontent.setAction(content.getString("action"));
+				msgcontent.setMsgtime(content.getString("time"));
+				msgcontent.setMsgtype("revoke");
 			}
 			// 解析消息 并插入到数据库
 			msgContentMapper.insertMsgContent(msgcontent);

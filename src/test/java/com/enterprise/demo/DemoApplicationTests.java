@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.alibaba.fastjson.JSON;
@@ -20,7 +20,7 @@ public class DemoApplicationTests {
 
 	// 从官网上拉下来的代码  自己测了一下 有很多需要改的地方  实际应用看代码里边具体实现。。。
 	@Test
-	void contextLoads() {
+	public void contextLoads() {
 		String[] args = new String[6];
 		args[0] = "3";// 查询类型
 		args[1] = "0";// seq
@@ -102,9 +102,9 @@ public class DemoApplicationTests {
 			}
 		} else if (args[0].equals("3")) {
 			// 获取到的消息进行解密
-			String encrypt_random_key ="Hk2cKKtnshe2aFhDwE0UAikSXXnUWC23MQZQa4UVDkGzUrdKAasSPTMi3jI/whhhiEWyFBkAPH064K1r+4MNuGp2W5MU52N9p3pSgByoDBG1V+vP7iTgC+6hQHCXApUfBB5/8UOUu/HKbzTZ+DoH/v02BUlISY3hzWZ9pA1dC+I67DF3q6mnJBkMmNDqAVpfCGdiFKS4i5g9lIRgf3fdEEycnLi+wPlYYgZnNuH5wRgJKqnqfvmPya6tFiBoBW5pfIWaBBVp1Af0Uqu0QNtbQtaVm9fyhXHX8dslcPYtv6fc4ndKDK1pJx+kMAWRP7niWEG9pI0mmv35OrC765zMwA==";
+			String encrypt_random_key ="dTJhxJVjHuOHyl8f1Co3TsrJMGa7Y9bHKGaSFjSolHXC0FvybDP1v3oCRo0dYk1UmWRWILgpU02VNpag5cHOtOxKleWyozT4ml/ndFPu+t8aK7M+rv8Ojtsj8awSS2t1P3Y1cE4Xgq1+RPZkrCRKq3xc2UJdutML/SUv3tCzJSP8LpHHxdbJqqA0AwHKb5E3g7DHUlJ6OFM0NQkQKyjh8v7efNXnhJY0w0q01wT8QhC9Si6m6TT+/B7eSTf82YJ/ER8rCwBruLNXN+Z+zGTOaklJsBwaETve6KU3OwSTy1lvLl/VD+Hc5J+Ka+9XEQ/tMg342T/+ascWHVtuq/duUw==";
 			String encrypt_key = null;
-			String encrypt_msg="eAnewCo3NjGyVKXW9GSsbHr5WCpJOpleTUPGOUA42XwUD2ZTybAwaoo75H3U4a0dOPuOcGa5IocuBbb5jRbcQQCc+VetBMfL9cZNGzKEHMTciRjmyNJpDo46f/eHN3IfSg7VF/gJsYgVqyobSecaaYDJLstkYJFcHXymlYFtWlhedN4u1cdsw0s2qkj9qrLl5DVl9b+6i5Z3ug2zRMpwqvNRGzSDv7zA7Zy6pWGdUUclaLpGc11obBMywZQLpxfc7SW3WN2TQiZ7tUyCbLp3ob7s74/MU5vxC1aCqLRzHRupjgGYYzwGiIHXQAmytF8AWePuMPa4nIJ9An2zJ9OXAsp7UjkXTzMX8INYmATY8KgZAuAkvnW/FNQOVO8Wa0YgLinTCutKmoSYMaoD4XsMeDjnh94RS78PhBtbCVSztMc9wZlmA76um1MlYiuSRE6Tx3/EjPs2QnTHrm4mwu5U6k3ONf4PxFnRNRHJ19De5XJYnpPHo+ea+hwjs3kvl/EU5TR6TeN9ZKqsKO8IGAnZQnK9rcsTdo9o/4PDwMlk21KB/dtdHAOfWOQjdNRxlgIHa2JEPhw9kkifUpIZ2NIXcpn6yQ/RxZlpqtY6KnxIU/S3aDDJ6weGs6QDtrUghQi5pTf/Ii8r0QyrM6lO5km2IBwMxuMOdcaJU304WPDRmoFnfmAXihME41EFBlEPXDKtMbGXLHPSHo9hg/3kWUft/9RmvuBQexWsajdD6Qvh1M/cPWi4rpl9+0irsTFUG7tlXDX/5A5+gV1wbi8/366uHA3WEmmXz6bl19bMEnjfMWz0t48AKgAxosgqsN26Xw0/lx8xyAccjsbZqTiMFwJ4hGgjZ6g5l8I+cJ8WndHvqwbmdfAt+pmJc4YbA1RwO40r+nbym0qYTXQ6y90aEaCzXouGhDN/lJqhQWk0nsGU6jMHJOyDva4/XUdU8T3v1Wtl49PLlctqu";
+			String encrypt_msg="Hw0zlZSHkNcMW5cFILoupw42mTyDnxsfc5ls3cJKwePHtzNGCTksRjDttB0pSCUiAyhJl+TF09dzXGD0bngOwHGUcf1zIYjyf8PX9jG9Q3WTjvr4FbzCnxGQKBkr72bZxu9p/KvhqOC+ZDSd2ILJshXbqx5rs5NVreY94sp8kv4u8Y/czdF2Xi46dGvaPX1G4WAz3UMPWMHVr8n+nNaqW9PGOY7kNanATk=Xj";
 			try {
 				encrypt_key = RSAUtils.getPrivateKey(encrypt_random_key);
 			} catch (Exception e) {
@@ -118,7 +118,6 @@ public class DemoApplicationTests {
 				System.out.println("getchatdata ret " + ret);
 				return;
 			}
-			System.out.println("decrypt ret:" + ret + " msg:" + Finance.GetContentFromSlice(msg));
 			Finance.FreeSlice(msg);
 		} else {
 			System.out.println("wrong args " + args[0]);

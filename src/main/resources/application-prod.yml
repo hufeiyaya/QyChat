@@ -4,7 +4,7 @@ server:
 spring:
     #数据源
   datasource:
-    url: jdbc:mysql://172.16.1.2:3306/qychatdb?useUnicode=true&amp;characterEncoding=UTF-8
+    url: jdbc:mysql://172.16.1.2:3306/qychatdb?useUnicode=true&amp;characterEncoding=UTF-8&useSSL=false
     username: root
     password: Huake@uat2020
     driver-class-name: com.mysql.jdbc.Driver
