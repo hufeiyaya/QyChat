@@ -8,7 +8,7 @@ package com.vocust.qywx.demo.utils;
 */
 
 /**
- * @see 企业微信参数
+ * @see 企业微信参数 请配置好相关参数后再测试
  * @author lenovo
  *
  */
